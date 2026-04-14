@@ -2,11 +2,20 @@
 # Build mobile apps via Capacitor
 set -e
 
-for app in learn agent; do
-  echo "Building ${app} mobile..."
-  cd "$(dirname "$0")/../apps/${app}"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+for app in learn; do
+  echo "=== Building ${app} mobile ==="
+
+  # 1. Export the Next.js app as static files
+  echo "  [1/2] Exporting web/${app}..."
+  cd "${REPO_ROOT}/apps/web/${app}"
   bun run build
-  cd "../${app}-mobile"
-  npx cap sync
-  echo "${app} mobile synced! Run xcodebuild/gradle manually."
+
+  # 2. Sync Capacitor with the new web output
+  echo "  [2/2] Syncing mobile/${app} with Capacitor..."
+  cd "${REPO_ROOT}/apps/mobile/${app}"
+  node_modules/.bin/cap sync
+
+  echo "=== ${app} mobile synced! Run xcodebuild/gradle manually. ==="
 done
