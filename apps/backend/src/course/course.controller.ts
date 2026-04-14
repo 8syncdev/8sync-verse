@@ -1,0 +1,9 @@
+import { api } from "encore.dev/api";
+import type { DataResponse } from "../utils";
+
+export const health = api(
+  { expose: true, method: "GET", path: "/course/health" },
+  async (): Promise<DataResponse> => {
+    return { success: true, result: { service: "course", timestamp: new Date().toISOString() } };
+  },
+);

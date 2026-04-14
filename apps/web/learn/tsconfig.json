@@ -1,0 +1,12 @@
+{
+  "extends": "../../../packages/config/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@8sync/ui": ["../../../packages/ui/src"],
+      "@8sync/ui/*": ["../../../packages/ui/src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

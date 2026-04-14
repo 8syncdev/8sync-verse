@@ -1,0 +1,43 @@
+{
+  "name": "8sync-verse",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "bun@1.3.10",
+  "description": "8 Sync Verse — Multi-platform learning & AI agent ecosystem",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "check": "turbo check",
+    "clean": "turbo clean",
+
+    "dev:web": "turbo dev --filter='./apps/web/*'",
+    "dev:main": "turbo dev --filter=@8sync/main",
+    "dev:learn": "turbo dev --filter=@8sync/learn",
+    "dev:agent": "turbo dev --filter=@8sync/agent",
+    "dev:admin": "turbo dev --filter=@8sync/admin",
+    "dev:be": "cd apps/backend && encore run",
+
+    "build:desktop": "bash scripts/build-desktop.sh",
+    "build:mobile": "bash scripts/build-mobile.sh",
+
+    "db:push": "cd apps/backend && encore db push",
+    "db:studio": "cd apps/backend && drizzle-kit studio",
+
+    "ref:update": "bash scripts/update-refs.sh"
+  },
+  "workspaces": [
+    "apps/web/*",
+    "apps/desktop/*",
+    "apps/mobile/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "turbo": "^2.9.6",
+    "typescript": "^6.0.2"
+  }
+}

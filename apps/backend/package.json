@@ -1,0 +1,25 @@
+{
+  "name": "@8sync/backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "encore run",
+    "test": "encore test",
+    "lint": "tsc --noEmit",
+    "gen:client": "encore gen client --output=../../packages/core/src/api/client.ts --env=local"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "drizzle-orm": "^0.45.2",
+    "encore.dev": "^1.56.6",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.2"
+  }
+}
