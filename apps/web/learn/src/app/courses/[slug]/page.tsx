@@ -1,36 +1,67 @@
-import { MarketingLayout } from "@8sync/ui";
-import { Button } from "@8sync/ui";
-import { LearnNavbar } from "@/components/learn-navbar";
-import { LearnFooter } from "@/components/learn-footer";
+import { Button, MarketingLayout } from "@8sync/ui";
 import { ArrowLeft, BookOpen, CheckCircle, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LearnFooter } from "@/components/learn-footer";
+import { LearnNavbar } from "@/components/learn-navbar";
 
 // Minimal static course data — replace with DB/CMS fetch in production
-const coursesData: Record<string, { title: string; description: string; level: string; lessons: string[] }> = {
+const coursesData: Record<
+  string,
+  { title: string; description: string; level: string; lessons: string[] }
+> = {
   "nextjs-fullstack": {
     title: "Next.js Fullstack",
     description: "Build production-grade apps with Next.js 15 and the App Router.",
     level: "Intermediate",
-    lessons: ["Introduction & Project Setup", "App Router Fundamentals", "Server Components", "Data Fetching Patterns", "API Routes with tRPC", "Authentication with NextAuth", "Database with Drizzle ORM", "Deployment on Vercel"],
+    lessons: [
+      "Introduction & Project Setup",
+      "App Router Fundamentals",
+      "Server Components",
+      "Data Fetching Patterns",
+      "API Routes with tRPC",
+      "Authentication with NextAuth",
+      "Database with Drizzle ORM",
+      "Deployment on Vercel",
+    ],
   },
   "ai-agent-dev": {
     title: "AI Agent Development",
     description: "Create autonomous agents with LangChain, tools, and memory.",
     level: "Advanced",
-    lessons: ["LLM Fundamentals", "LangChain Setup", "Tool Calling", "Memory Systems", "Agent Loops", "Multi-Agent Orchestration"],
+    lessons: [
+      "LLM Fundamentals",
+      "LangChain Setup",
+      "Tool Calling",
+      "Memory Systems",
+      "Agent Loops",
+      "Multi-Agent Orchestration",
+    ],
   },
   "typescript-mastery": {
     title: "TypeScript Mastery",
     description: "From zero to expert with modern TypeScript patterns.",
     level: "Beginner",
-    lessons: ["Types & Interfaces", "Generics", "Utility Types", "Conditional Types", "Declaration Files", "Advanced Patterns"],
+    lessons: [
+      "Types & Interfaces",
+      "Generics",
+      "Utility Types",
+      "Conditional Types",
+      "Declaration Files",
+      "Advanced Patterns",
+    ],
   },
   "database-design": {
     title: "Database Design",
     description: "Relational and document database design for scalable apps.",
     level: "Intermediate",
-    lessons: ["Normalization", "Indexing Strategies", "Drizzle ORM", "MongoDB Patterns", "Migrations"],
+    lessons: [
+      "Normalization",
+      "Indexing Strategies",
+      "Drizzle ORM",
+      "MongoDB Patterns",
+      "Migrations",
+    ],
   },
   "web-security": {
     title: "Web Security",
@@ -108,7 +139,9 @@ export default async function CourseDetailPage({ params }: CourseDetailPageProps
               >
                 <CheckCircle className="h-4 w-4 text-verse-primary/40 shrink-0" />
                 <span className="text-verse-text-muted mr-auto">
-                  <span className="text-verse-text-heading font-medium">{String(i + 1).padStart(2, "0")}.</span>{" "}
+                  <span className="text-verse-text-heading font-medium">
+                    {String(i + 1).padStart(2, "0")}.
+                  </span>{" "}
                   {lesson}
                 </span>
               </li>

@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
 import { cn } from "../utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -29,18 +29,10 @@ export interface MarketingLayoutProps {
  * </MarketingLayout>
  * ```
  */
-export function MarketingLayout({
-  navbar,
-  footer,
-  children,
-  className,
-}: MarketingLayoutProps) {
+export function MarketingLayout({ navbar, footer, children, className }: MarketingLayoutProps) {
   return (
     <div
-      className={cn(
-        "flex min-h-screen flex-col bg-background text-foreground",
-        className,
-      )}
+      className={cn("flex min-h-screen flex-col bg-background text-foreground", className)}
       data-layout="marketing"
     >
       {/* ── Navbar ── */}
@@ -48,28 +40,18 @@ export function MarketingLayout({
         className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-sm"
         data-marketing-navbar
       >
-        <div className="container mx-auto flex h-16 items-center px-4">
-          {navbar}
-        </div>
+        <div className="container mx-auto flex h-16 items-center px-4">{navbar}</div>
       </header>
 
       {/* ── Content ── */}
-      <main
-        className="flex-1"
-        data-marketing-content
-      >
+      <main className="flex-1" data-marketing-content>
         {children}
       </main>
 
       {/* ── Footer ── */}
       {footer && (
-        <footer
-          className="border-t border-border/60 bg-card py-8"
-          data-marketing-footer
-        >
-          <div className="container mx-auto px-4">
-            {footer}
-          </div>
+        <footer className="border-t border-border/60 bg-card py-8" data-marketing-footer>
+          <div className="container mx-auto px-4">{footer}</div>
         </footer>
       )}
     </div>

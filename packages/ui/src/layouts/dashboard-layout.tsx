@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
 import { cn } from "../utils";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -40,10 +40,7 @@ export function DashboardLayout({
 }: DashboardLayoutProps) {
   return (
     <div
-      className={cn(
-        "flex min-h-screen bg-background text-foreground",
-        className,
-      )}
+      className={cn("flex min-h-screen bg-background text-foreground", className)}
       data-layout="dashboard"
     >
       {/* ── Sidebar ── */}
@@ -72,10 +69,7 @@ export function DashboardLayout({
         )}
 
         {/* Content */}
-        <main
-          className="flex-1 overflow-y-auto p-6"
-          data-dashboard-content
-        >
+        <main className="flex-1 overflow-y-auto p-6" data-dashboard-content>
           {children}
         </main>
       </div>

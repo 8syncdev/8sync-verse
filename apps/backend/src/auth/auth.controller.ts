@@ -1,11 +1,11 @@
 import { api } from "encore.dev/api";
-import type { LoginDto, RegisterDto, TokenResponse, AuthResponse } from "./auth.dto";
+import type { LoginDto, RegisterDto, TokenResponse } from "./auth.dto";
 import type { DataResponse } from "../utils";
 
 // POST /auth/login
 export const login = api(
   { expose: true, method: "POST", path: "/auth/login" },
-  async (data: LoginDto): Promise<TokenResponse> => {
+  async (_data: LoginDto): Promise<TokenResponse> => {
     // TODO: implement with AuthService
     return {
       success: true,
@@ -21,7 +21,7 @@ export const login = api(
 // POST /auth/register
 export const register = api(
   { expose: true, method: "POST", path: "/auth/register" },
-  async (data: RegisterDto): Promise<TokenResponse> => {
+  async (_data: RegisterDto): Promise<TokenResponse> => {
     // TODO: implement with AuthService
     return {
       success: true,
@@ -37,7 +37,7 @@ export const register = api(
 // POST /auth/refresh
 export const refresh = api(
   { expose: true, method: "POST", path: "/auth/refresh" },
-  async ({ refreshToken }: { refreshToken: string }): Promise<TokenResponse> => {
+  async ({ refreshToken: _refreshToken }: { refreshToken: string }): Promise<TokenResponse> => {
     // TODO: implement
     return { success: false, message: "Not implemented" };
   },
@@ -46,7 +46,7 @@ export const refresh = api(
 // POST /auth/verify
 export const verify = api(
   { expose: true, method: "POST", path: "/auth/verify" },
-  async ({ token }: { token: string }): Promise<DataResponse> => {
+  async ({ token: _token }: { token: string }): Promise<DataResponse> => {
     // TODO: implement
     return { success: false, message: "Not implemented" };
   },

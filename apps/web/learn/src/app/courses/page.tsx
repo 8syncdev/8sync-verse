@@ -1,16 +1,58 @@
 import { MarketingLayout } from "@8sync/ui";
-import { LearnNavbar } from "@/components/learn-navbar";
-import { LearnFooter } from "@/components/learn-footer";
 import { BookOpen, Code2, Cpu, Database, Globe, Shield } from "lucide-react";
 import Link from "next/link";
+import { LearnFooter } from "@/components/learn-footer";
+import { LearnNavbar } from "@/components/learn-navbar";
 
 const courses = [
-  { slug: "nextjs-fullstack", title: "Next.js Fullstack", description: "Build production-grade apps with Next.js 15 and the App Router", level: "Intermediate", lessons: 24, icon: Code2 },
-  { slug: "ai-agent-dev", title: "AI Agent Development", description: "Create autonomous agents with LangChain, tools, and memory", level: "Advanced", lessons: 18, icon: Cpu },
-  { slug: "typescript-mastery", title: "TypeScript Mastery", description: "From zero to expert with modern TypeScript patterns", level: "Beginner", lessons: 30, icon: BookOpen },
-  { slug: "database-design", title: "Database Design", description: "Relational and document database design for scalable apps", level: "Intermediate", lessons: 16, icon: Database },
-  { slug: "web-security", title: "Web Security", description: "Auth, CSRF, XSS, and production hardening essentials", level: "Intermediate", lessons: 12, icon: Shield },
-  { slug: "api-design", title: "API Design", description: "REST and tRPC API design patterns for real-world apps", level: "Beginner", lessons: 20, icon: Globe },
+  {
+    slug: "nextjs-fullstack",
+    title: "Next.js Fullstack",
+    description: "Build production-grade apps with Next.js 15 and the App Router",
+    level: "Intermediate",
+    lessons: 24,
+    icon: Code2,
+  },
+  {
+    slug: "ai-agent-dev",
+    title: "AI Agent Development",
+    description: "Create autonomous agents with LangChain, tools, and memory",
+    level: "Advanced",
+    lessons: 18,
+    icon: Cpu,
+  },
+  {
+    slug: "typescript-mastery",
+    title: "TypeScript Mastery",
+    description: "From zero to expert with modern TypeScript patterns",
+    level: "Beginner",
+    lessons: 30,
+    icon: BookOpen,
+  },
+  {
+    slug: "database-design",
+    title: "Database Design",
+    description: "Relational and document database design for scalable apps",
+    level: "Intermediate",
+    lessons: 16,
+    icon: Database,
+  },
+  {
+    slug: "web-security",
+    title: "Web Security",
+    description: "Auth, CSRF, XSS, and production hardening essentials",
+    level: "Intermediate",
+    lessons: 12,
+    icon: Shield,
+  },
+  {
+    slug: "api-design",
+    title: "API Design",
+    description: "REST and tRPC API design patterns for real-world apps",
+    level: "Beginner",
+    lessons: 20,
+    icon: Globe,
+  },
 ];
 
 const levelColor: Record<string, string> = {

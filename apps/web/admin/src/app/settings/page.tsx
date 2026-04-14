@@ -1,6 +1,5 @@
-import { DashboardLayout } from "@8sync/ui";
-import { Button } from "@8sync/ui";
-import { LayoutDashboard, Users, Settings } from "lucide-react";
+import { Button, DashboardLayout } from "@8sync/ui";
+import { LayoutDashboard, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
 function AdminSidebar() {
@@ -10,13 +9,22 @@ function AdminSidebar() {
         <LayoutDashboard className="h-5 w-5 text-verse-primary" />
         <span className="font-semibold text-sm">8 Sync Admin</span>
       </div>
-      <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <LayoutDashboard className="h-4 w-4" /> Overview
       </Link>
-      <Link href="/users" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/users"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <Users className="h-4 w-4" /> Users
       </Link>
-      <Link href="/settings" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium">
+      <Link
+        href="/settings"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium"
+      >
         <Settings className="h-4 w-4" /> Settings
       </Link>
     </div>
@@ -25,11 +33,16 @@ function AdminSidebar() {
 
 export default function SettingsPage() {
   return (
-    <DashboardLayout sidebar={<AdminSidebar />} header={<span className="font-semibold text-sm">Admin Dashboard</span>}>
+    <DashboardLayout
+      sidebar={<AdminSidebar />}
+      header={<span className="font-semibold text-sm">Admin Dashboard</span>}
+    >
       <div className="flex flex-col gap-6 p-6">
         <div>
           <h1 className="text-3xl font-bold text-verse-text-heading">Settings</h1>
-          <p className="text-verse-text-muted mt-1">Configure platform preferences and integrations.</p>
+          <p className="text-verse-text-muted mt-1">
+            Configure platform preferences and integrations.
+          </p>
         </div>
         <div className="flex flex-col gap-4 max-w-lg">
           <div className="rounded-verse-lg border border-verse-border bg-verse-surface p-4 flex flex-col gap-3">

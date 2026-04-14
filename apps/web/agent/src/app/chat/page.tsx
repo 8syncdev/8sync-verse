@@ -1,6 +1,5 @@
-import { DashboardLayout } from "@8sync/ui";
-import { Button } from "@8sync/ui";
-import { Bot, Sparkles, Send } from "lucide-react";
+import { Button, DashboardLayout } from "@8sync/ui";
+import { Bot, Send, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 function AgentSidebar() {
@@ -10,13 +9,22 @@ function AgentSidebar() {
         <Sparkles className="h-5 w-5 text-verse-primary" />
         <span className="font-semibold text-sm">8 Sync Agent</span>
       </div>
-      <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <Bot className="h-4 w-4" /> Home
       </Link>
-      <Link href="/chat" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium">
+      <Link
+        href="/chat"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium"
+      >
         <Sparkles className="h-4 w-4" /> Chat
       </Link>
-      <Link href="/agents" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/agents"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <Bot className="h-4 w-4" /> Agents
       </Link>
     </div>
@@ -25,7 +33,10 @@ function AgentSidebar() {
 
 export default function ChatPage() {
   return (
-    <DashboardLayout sidebar={<AgentSidebar />} header={<span className="font-semibold text-sm">Chat</span>}>
+    <DashboardLayout
+      sidebar={<AgentSidebar />}
+      header={<span className="font-semibold text-sm">Chat</span>}
+    >
       <div className="flex flex-col h-full max-w-3xl mx-auto gap-6">
         <h1 className="text-2xl font-bold text-verse-text-heading">AI Chat</h1>
 

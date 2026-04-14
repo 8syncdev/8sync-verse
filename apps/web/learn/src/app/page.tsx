@@ -1,14 +1,28 @@
-import { MarketingLayout } from "@8sync/ui";
-import { Button } from "@8sync/ui";
-import { LearnNavbar } from "@/components/learn-navbar";
-import { LearnFooter } from "@/components/learn-footer";
+import { Button, MarketingLayout } from "@8sync/ui";
 import { ArrowRight, BookOpen, Code2, Cpu } from "lucide-react";
 import Link from "next/link";
+import { LearnFooter } from "@/components/learn-footer";
+import { LearnNavbar } from "@/components/learn-navbar";
 
 const featuredCourses = [
-  { slug: "nextjs-fullstack", title: "Next.js Fullstack", description: "Build production-grade apps with Next.js 15", icon: Code2 },
-  { slug: "ai-agent-dev", title: "AI Agent Development", description: "Create autonomous agents with LangChain & tools", icon: Cpu },
-  { slug: "typescript-mastery", title: "TypeScript Mastery", description: "From zero to expert with modern TypeScript", icon: BookOpen },
+  {
+    slug: "nextjs-fullstack",
+    title: "Next.js Fullstack",
+    description: "Build production-grade apps with Next.js 15",
+    icon: Code2,
+  },
+  {
+    slug: "ai-agent-dev",
+    title: "AI Agent Development",
+    description: "Create autonomous agents with LangChain & tools",
+    icon: Cpu,
+  },
+  {
+    slug: "typescript-mastery",
+    title: "TypeScript Mastery",
+    description: "From zero to expert with modern TypeScript",
+    icon: BookOpen,
+  },
 ];
 
 export default function HomePage() {
@@ -22,10 +36,12 @@ export default function HomePage() {
         </div>
         <h1 className="text-5xl font-bold text-verse-text-heading mb-4">
           Master <span className="text-gradient">Modern Tech</span>
-          <br />with 8Sync Verse
+          <br />
+          with 8Sync Verse
         </h1>
         <p className="text-verse-text-muted text-lg max-w-xl mx-auto mb-8">
-          Structured courses on Next.js, AI agents, TypeScript, and more — built for engineers who ship.
+          Structured courses on Next.js, AI agents, TypeScript, and more — built for engineers who
+          ship.
         </p>
         <div className="flex items-center justify-center gap-4">
           <Button asChild size="lg">

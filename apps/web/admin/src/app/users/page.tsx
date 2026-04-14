@@ -1,5 +1,5 @@
 import { DashboardLayout } from "@8sync/ui";
-import { LayoutDashboard, Users, Settings } from "lucide-react";
+import { LayoutDashboard, Settings, Users } from "lucide-react";
 import Link from "next/link";
 
 function AdminSidebar() {
@@ -9,13 +9,22 @@ function AdminSidebar() {
         <LayoutDashboard className="h-5 w-5 text-verse-primary" />
         <span className="font-semibold text-sm">8 Sync Admin</span>
       </div>
-      <Link href="/" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <LayoutDashboard className="h-4 w-4" /> Overview
       </Link>
-      <Link href="/users" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium">
+      <Link
+        href="/users"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-verse-primary/10 text-verse-primary text-sm font-medium"
+      >
         <Users className="h-4 w-4" /> Users
       </Link>
-      <Link href="/settings" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm">
+      <Link
+        href="/settings"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-verse-surface text-sm"
+      >
         <Settings className="h-4 w-4" /> Settings
       </Link>
     </div>
@@ -30,7 +39,10 @@ const MOCK_USERS = [
 
 export default function UsersPage() {
   return (
-    <DashboardLayout sidebar={<AdminSidebar />} header={<span className="font-semibold text-sm">Admin Dashboard</span>}>
+    <DashboardLayout
+      sidebar={<AdminSidebar />}
+      header={<span className="font-semibold text-sm">Admin Dashboard</span>}
+    >
       <div className="flex flex-col gap-6 p-6">
         <div>
           <h1 className="text-3xl font-bold text-verse-text-heading">Users</h1>
@@ -41,18 +53,25 @@ export default function UsersPage() {
             <thead className="bg-verse-surface">
               <tr>
                 {["Name", "Email", "Role", "Status"].map((h) => (
-                  <th key={h} className="text-left px-4 py-3 font-medium text-verse-text-muted">{h}</th>
+                  <th key={h} className="text-left px-4 py-3 font-medium text-verse-text-muted">
+                    {h}
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {MOCK_USERS.map((user) => (
-                <tr key={user.id} className="border-t border-verse-border hover:bg-verse-surface/50">
+                <tr
+                  key={user.id}
+                  className="border-t border-verse-border hover:bg-verse-surface/50"
+                >
                   <td className="px-4 py-3 font-medium text-verse-text-heading">{user.name}</td>
                   <td className="px-4 py-3 text-verse-text-muted">{user.email}</td>
                   <td className="px-4 py-3">{user.role}</td>
                   <td className="px-4 py-3">
-                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${user.status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                    <span
+                      className={`px-2 py-0.5 rounded-full text-xs font-medium ${user.status === "Active" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}
+                    >
                       {user.status}
                     </span>
                   </td>

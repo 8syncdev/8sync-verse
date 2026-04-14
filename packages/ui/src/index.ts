@@ -8,6 +8,11 @@ export { GalaxyBackground } from "./canvas/galaxy-background";
 export { GalaxyEntrance } from "./canvas/galaxy-entrance";
 export { ParticleField } from "./canvas/particle-field";
 export { PixelNetwork } from "./canvas/pixel-network";
+export type { DashboardLayoutProps } from "./layouts/dashboard-layout";
+// Layouts
+export { DashboardLayout } from "./layouts/dashboard-layout";
+export type { MarketingLayoutProps } from "./layouts/marketing-layout";
+export { MarketingLayout } from "./layouts/marketing-layout";
 export { Alert, AlertDescription, AlertTitle } from "./primitives/alert";
 export { Avatar, AvatarFallback, AvatarImage } from "./primitives/avatar";
 export { Badge, badgeVariants } from "./primitives/badge";
@@ -81,12 +86,6 @@ export {
   TooltipProvider,
   TooltipTrigger,
 } from "./primitives/tooltip";
-
-// Layouts
-export { DashboardLayout } from "./layouts/dashboard-layout";
-export type { DashboardLayoutProps } from "./layouts/dashboard-layout";
-export { MarketingLayout } from "./layouts/marketing-layout";
-export type { MarketingLayoutProps } from "./layouts/marketing-layout";
 
 // Utils
 export { cn } from "./utils";
