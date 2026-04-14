@@ -1,53 +1,55 @@
-# 8 Sync Verse Backend — Encore.ts
+# apps/backend — Agent Instructions
 
-> **Framework**: Encore.dev (TypeScript) | **ORM**: Drizzle | **DB**: PostgreSQL
+> **Encore.ts microservices** | Port 4000 (API) · 9400 (Encore dashboard)
 
-## Run
+## Purpose
+
+The entire backend — auth, users, roles, courses, lessons, enrollments, and AI chat. Built with Encore.ts framework (TypeScript on Go runtime). Each `src/<service>/` directory is an independent Encore service.
+
+## Commands
 
 ```bash
-# From project root
-bun run dev:be          # encore run
-
-# Or directly
-cd apps/backend
-encore run              # Start dev server (auto dashboard at localhost:9400)
-encore test             # Run tests
+bun dev          # encore run — starts all services
+bun lint         # tsc --noEmit (Biome excluded for backend)
+bun test         # encore test
+bun run gen:client   # regenerate API client → packages/core/src/api/client.ts
 ```
 
-## Architecture
-
-Each folder in `src/` is an **Encore service** (microservice):
+## Structure
 
 ```
 src/
-├── auth/          # Login, register, JWT, refresh tokens
-├── user/          # User CRUD, profile
-├── role/          # RBAC roles & permissions
+├── auth/          # JWT login, register, token refresh
+├── user/          # User CRUD + profile
+├── role/          # RBAC — assign/check roles
 ├── course/        # Course management
-├── lesson/        # Lesson content
-├── enrollment/    # User-course enrollment
-├── chat/          # AI agent chat, token usage tracking
-└── utils/         # Shared DTOs, pagination
+├── lesson/        # Lesson content + ordering
+├── enrollment/    # Student ↔ course relationships
+├── chat/          # AI agent conversations + token tracking
+├── db/            # Drizzle ORM schema + migrations
+└── utils/         # Shared DTOs, validators, helpers
 ```
 
-## Service Pattern
+## Key Rules
 
+- **NO Biome** — backend is excluded from `biome.json` `files.includes`; use **tsc** only
+- **Encore APIs** — export via `encore.dev/api`; never use raw express/fetch handlers
+- **Drizzle ORM** — all DB access goes through Drizzle; raw SQL only in migrations
+- **Zod** for request validation in every endpoint
+- **bcrypt** for password hashing — never store plaintext
+- **jsonwebtoken** for JWT — use `auth/` service for all token logic
+- **No `any`** — TypeScript strict
+- **Bun only** — no npm/yarn/pnpm
+
+## After Schema Changes
+
+```bash
+# Re-generate the client for frontend packages
+bun run gen:client
 ```
-svc/
-├── encore.service.ts     # Service declaration
-├── svc.controller.ts     # API endpoints (encore api())
-├── svc.service.ts        # Business logic
-├── svc.dto.ts            # Request/response types
-├── db/
-│   ├── svc.db.ts         # Drizzle DB instance
-│   └── svc.schema.ts     # Drizzle table schema
-└── index.ts              # Re-exports
+
+## Lint
+
+```bash
+bun lint        # tsc --noEmit
 ```
-
-## Rules
-
-1. **NO biome** — Encore uses tsc for lint (`tsc --noEmit`)
-2. **Encore API pattern** — `api({ expose, method, path }, handler)`
-3. **Drizzle ORM** — type-safe, no raw SQL
-4. **Each service = own DB** — Encore manages per-service databases
-5. **TypeScript strict** — no `any`
