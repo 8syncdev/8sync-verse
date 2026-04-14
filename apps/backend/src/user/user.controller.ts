@@ -1,6 +1,6 @@
 import { api } from "encore.dev/api";
 import { UserService } from "./user.service.js";
-import type { CreateUserDto, UpdateUserDto, UserResponse } from "./user.dto.js";
+import type { CreateUserDto, UserResponse } from "./user.dto.js";
 import type { DataResponse } from "../utils/index.js";
 
 // GET /user/health
@@ -42,8 +42,8 @@ export const getUsers = api(
 // GET /users/:id
 export const getUser = api(
   { expose: true, method: "GET", path: "/users/:id" },
-  async ({ id }: { id: number }): Promise<UserResponse> => {
-    return UserService.findOne(id);
+  async ({ id }: { id: string }): Promise<UserResponse> => {
+    return UserService.findOne(Number(id));
   },
 );
 
@@ -58,17 +58,17 @@ export const createUser = api(
 // PUT /users/:id
 export const updateUser = api(
   { expose: true, method: "PUT", path: "/users/:id" },
-  async (body: UpdateUserDto & { id: number }): Promise<UserResponse> => {
-    if (!body.id) return { success: false, message: "User not found" };
-    return UserService.update(body.id, body);
+  async (params: { id: string; username?: string; email?: string; phone?: string }): Promise<UserResponse> => {
+    if (!params.id) return { success: false, message: "User not found" };
+    return UserService.update(Number(params.id), { username: params.username, email: params.email, phone: params.phone });
   },
 );
 
 // DELETE /users/:id
 export const deleteUser = api(
   { expose: true, method: "DELETE", path: "/users/:id" },
-  async ({ id }: { id: number }): Promise<UserResponse> => {
-    return UserService.delete(id);
+  async ({ id }: { id: string }): Promise<UserResponse> => {
+    return UserService.delete(Number(id));
   },
 );
 

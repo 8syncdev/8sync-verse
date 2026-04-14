@@ -2,10 +2,8 @@ import { api } from "encore.dev/api";
 import { RoleService, UserRoleService } from "./role.service.js";
 import type {
   CreateRoleDto,
-  UpdateRoleDto,
   RoleResponse,
   CreateUserRoleDto,
-  UpdateUserRoleDto,
   UserRoleResponse,
   RoleName,
 } from "./role.dto.js";
@@ -46,8 +44,8 @@ export const getRoles = api(
 // GET /roles/:id
 export const getRole = api(
   { expose: true, method: "GET", path: "/roles/:id" },
-  async ({ id }: { id: number }): Promise<RoleResponse> => {
-    return RoleService.findOne(id);
+  async ({ id }: { id: string }): Promise<RoleResponse> => {
+    return RoleService.findOne(Number(id));
   },
 );
 
@@ -62,17 +60,17 @@ export const createRole = api(
 // PUT /roles/:id
 export const updateRole = api(
   { expose: true, method: "PUT", path: "/roles/:id" },
-  async (body: UpdateRoleDto & { id: number }): Promise<RoleResponse> => {
-    if (!body.id) return { success: false, message: "Id is required" };
-    return RoleService.update(body.id, body);
+  async (params: { id: string; name?: string; description?: string }): Promise<RoleResponse> => {
+    if (!params.id) return { success: false, message: "Id is required" };
+    return RoleService.update(Number(params.id), { name: params.name, description: params.description });
   },
 );
 
 // DELETE /roles/:id
 export const deleteRole = api(
   { expose: true, method: "DELETE", path: "/roles/:id" },
-  async ({ id }: { id: number }): Promise<RoleResponse> => {
-    return RoleService.delete(id);
+  async ({ id }: { id: string }): Promise<RoleResponse> => {
+    return RoleService.delete(Number(id));
   },
 );
 
@@ -105,32 +103,32 @@ export const createUserRole = api(
 // PUT /user-roles/:userId/:roleId
 export const updateUserRole = api(
   { expose: true, method: "PUT", path: "/user-roles/:userId/:roleId" },
-  async (body: UpdateUserRoleDto & { userId: number; roleId: number }): Promise<UserRoleResponse> => {
-    return UserRoleService.update(Number(body.userId), Number(body.roleId), body);
+  async (params: { userId: string; roleId: string }): Promise<UserRoleResponse> => {
+    return UserRoleService.update(Number(params.userId), Number(params.roleId), {});
   },
 );
 
 // DELETE /user-roles/:userId/:roleId
 export const deleteUserRole = api(
   { expose: true, method: "DELETE", path: "/user-roles/:userId/:roleId" },
-  async ({ userId, roleId }: { userId: number; roleId: number }): Promise<UserRoleResponse> => {
-    return UserRoleService.delete(userId, roleId);
+  async ({ userId, roleId }: { userId: string; roleId: string }): Promise<UserRoleResponse> => {
+    return UserRoleService.delete(Number(userId), Number(roleId));
   },
 );
 
 // GET /user-roles/check/:userId/:roleId
 export const checkUserRole = api(
   { expose: true, method: "GET", path: "/user-roles/check/:userId/:roleId" },
-  async ({ userId, roleId }: { userId: number; roleId: number }): Promise<UserRoleResponse> => {
-    return UserRoleService.checkUserRole(userId, roleId);
+  async ({ userId, roleId }: { userId: string; roleId: string }): Promise<UserRoleResponse> => {
+    return UserRoleService.checkUserRole(Number(userId), Number(roleId));
   },
 );
 
 // GET /user-roles/all/:userId
 export const getAllRolesByUserId = api(
   { expose: true, method: "GET", path: "/user-roles/all/:userId" },
-  async ({ userId }: { userId: number }): Promise<RoleResponse> => {
-    return UserRoleService.getAllRolesByUserId(userId);
+  async ({ userId }: { userId: string }): Promise<RoleResponse> => {
+    return UserRoleService.getAllRolesByUserId(Number(userId));
   },
 );
 
@@ -141,10 +139,10 @@ export const createRolesForUser = api(
     userId,
     roleNames,
   }: {
-    userId: number;
+    userId: string;
     roleNames: RoleName[];
   }): Promise<UserRoleResponse> => {
-    return UserRoleService.createRolesForUser(userId, roleNames);
+    return UserRoleService.createRolesForUser(Number(userId), roleNames);
   },
 );
 
@@ -155,9 +153,9 @@ export const deleteRolesForUser = api(
     userId,
     roleNames,
   }: {
-    userId: number;
+    userId: string;
     roleNames: RoleName[];
   }): Promise<UserRoleResponse> => {
-    return UserRoleService.deleteRolesForUser(userId, roleNames);
+    return UserRoleService.deleteRolesForUser(Number(userId), roleNames);
   },
 );

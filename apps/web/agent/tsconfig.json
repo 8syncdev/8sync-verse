@@ -4,7 +4,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@8sync/ui": ["../../../packages/ui/src"],
-      "@8sync/ui/*": ["../../../packages/ui/src/*"]
+      "@8sync/ui/*": ["../../../packages/ui/src/*"],
+      "@8sync/core": ["../../../packages/core/src"],
+      "@8sync/core/*": ["../../../packages/core/src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

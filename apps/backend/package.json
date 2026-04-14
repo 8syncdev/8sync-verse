@@ -10,10 +10,12 @@
     "gen:client": "encore gen client --output=../../packages/core/src/api/client.ts --env=local"
   },
   "dependencies": {
+    "@types/pg": "^8.20.0",
     "bcrypt": "^6.0.0",
     "drizzle-orm": "^0.45.2",
     "encore.dev": "^1.56.6",
     "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
