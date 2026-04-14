@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = { transpilePackages: ["@8sync/ui"] };
+const nextConfig: NextConfig = {
+  transpilePackages: ["@8sync/ui"],
+  output: "export",
+};
 export default nextConfig;
