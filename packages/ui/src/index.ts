@@ -82,5 +82,11 @@ export {
   TooltipTrigger,
 } from "./primitives/tooltip";
 
+// Layouts
+export { DashboardLayout } from "./layouts/dashboard-layout";
+export type { DashboardLayoutProps } from "./layouts/dashboard-layout";
+export { MarketingLayout } from "./layouts/marketing-layout";
+export type { MarketingLayoutProps } from "./layouts/marketing-layout";
+
 // Utils
 export { cn } from "./utils";
