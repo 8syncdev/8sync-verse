@@ -65,10 +65,13 @@ curl http://localhost:4000/auth/health
 
 | Package | Mô tả |
 |---------|-------|
-| `packages/ui` | Verse theme, Galaxy canvas 3D, animations, components |
-| `packages/core` | Auth client, hooks, types (TODO) |
-| `packages/ai` | LLM integration (TODO) |
+| `packages/ui` | Verse design system — Radix primitives, Galaxy 3D canvas, Framer Motion animations |
+| `packages/core` | Auth client (auto-gen from Encore), hooks, types, constants, utils |
+| `packages/ai` | LLM integration (planned) |
 | `packages/config` | Shared tsconfig |
+
+> **packages/core/src/api/client.ts** is auto-generated from the Encore backend — never edit manually.
+> Regenerate: `cd apps/backend && encore gen client --target=ts --output=../../packages/core/src/api/client.ts .`
 
 ## 🔍 Lint & Format
 
