@@ -1,1 +1,17 @@
-export { health } from "./role.controller";
+export {
+  health,
+  countRoles,
+  getRoles,
+  getRole,
+  createRole,
+  updateRole,
+  deleteRole,
+  getUserRoles,
+  createUserRole,
+  updateUserRole,
+  deleteUserRole,
+  checkUserRole,
+  getAllRolesByUserId,
+  createRolesForUser,
+  deleteRolesForUser,
+} from "./role.controller.js";

@@ -1,21 +1,7 @@
-export function getOffset(page: number, pageSize: number): number {
-  return (page - 1) * pageSize;
+export function getOffset(page: number, size: number): number {
+  return (page - 1) * size;
 }
 
-export function paginatedData<T>(
-  data: T[],
-  total: number,
-  page: number,
-  pageSize: number,
-) {
-  return {
-    success: true,
-    result: data,
-    pagination: {
-      page,
-      pageSize,
-      total,
-      totalPages: Math.ceil(total / pageSize),
-    },
-  };
+export function paginatedData(opts: { page: number; size: number; count: number }) {
+  return { page: opts.page, size: opts.size, count: opts.count };
 }

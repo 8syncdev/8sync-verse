@@ -12,3 +12,9 @@ export interface PaginatedResponse<T = unknown> extends DataResponse<T[]> {
     totalPages: number;
   };
 }
+
+export interface Paginated {
+  page: number;
+  size: number;
+  count: number;
+}
