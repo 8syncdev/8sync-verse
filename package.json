@@ -1,42 +1,37 @@
 {
-  "name": "8sync-verse",
-  "private": true,
+  "name": "@8sync/main",
   "version": "0.1.0",
-  "packageManager": "bun@1.3.10",
-  "description": "8 Sync Verse — Multi-platform learning & AI agent ecosystem",
+  "private": true,
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint",
-    "format": "turbo format",
-    "check": "turbo check",
-    "clean": "turbo clean",
-
-    "dev:web": "turbo dev --filter='./apps/web/*'",
-    "dev:main": "turbo dev --filter=@8sync/main",
-    "dev:learn": "turbo dev --filter=@8sync/learn",
-    "dev:agent": "turbo dev --filter=@8sync/agent",
-    "dev:admin": "turbo dev --filter=@8sync/admin",
-    "dev:be": "cd apps/backend && encore run",
-
-    "build:desktop": "bash scripts/build-desktop.sh",
-    "build:mobile": "bash scripts/build-mobile.sh",
-
-    "db:push": "cd apps/backend && encore db push",
-    "db:studio": "cd apps/backend && drizzle-kit studio",
-
-    "ref:update": "bash scripts/update-refs.sh"
+    "dev": "next dev --turbopack --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check src/",
+    "check": "biome check src/",
+    "format": "biome format --write src/"
   },
-  "workspaces": [
-    "apps/web/*",
-    "apps/desktop/*",
-    "apps/mobile/*",
-    "packages/*"
-  ],
+  "dependencies": {
+    "@8sync/ui": "workspace:*",
+    "@base-ui/react": "^1.4.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "geist": "^1.7.0",
+    "lucide-react": "^1.8.0",
+    "next": "^16.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "shadcn": "^4.2.0",
+    "tailwind-merge": "^3.5.0",
+    "tw-animate-css": "^1.4.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^22.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "tailwindcss": "^4.2.2",
     "turbo": "^2.9.6",
     "typescript": "^6.0.2"
   }
